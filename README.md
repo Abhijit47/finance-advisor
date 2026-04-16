@@ -1,14 +1,13 @@
 # SmartWealth Assistant - PromptWars Virtual Submission
 
-A smart, dynamic AI Financial Advisor built for the PromptWars Virtual hackathon. Designed with rapid intent-driven development, strict security principles, robust API integrations, and comprehensive test coverage.
-
-## 🏆 Problem Statement Alignment
+## Challenge Vertical: Personal AI Assistant for Financial Planning
+## Target Persona: Young professionals and students
+## Chosen Logic: Intent-driven generative budgeting
 
 **Problem Statement:** Many individuals lack access to personalized, actionable, and secure financial advice, making it difficult to effectively budget their income and plan for long-term targets like saving for a home, car, or retirement. Financial inclusion requires simplified, secure, and intelligent tooling.
 
 **Solution:** The SmartWealth Assistant addresses this problem directly by providing a secure, intelligent personal finance assistant that processes user income, expenses, and goals to dynamically generate an interactive, actionable budget dashboard.
 
-**Target Persona:** Young Professionals, Students, and Individuals seeking to establish a strong financial foundation but lacking access to human financial planners.
 
 ## 🛠 Tech Stack & Architecture
 
@@ -42,3 +41,23 @@ To ensure security, we are not exposing our production API key in the repository
 4. Run `npm run dev` to start the Next.js development server.
 5. Navigate to `http://localhost:3000` to test out the assistant!
 6. To run the automated testing suite, use `npm run test`.
+
+## 📊 Testing Coverage Report
+
+We have implemented an integration and UI rendering testing suite using **Jest** and **React Testing Library**. Below is our latest coverage report demonstrating robust stability across core paths:
+
+```text
+------------------|---------|----------|---------|---------|-------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------|---------|----------|---------|---------|-------------------
+All files         |   85.71 |    51.61 |      80 |   91.22 |                   
+ app              |   83.72 |       44 |      70 |   87.17 |                   
+  page.tsx        |   83.72 |       44 |      70 |   87.17 | 37,59,73,137-204  
+ components/ui    |    87.5 |    83.33 |     100 |     100 |                   
+  button.tsx      |    87.5 |       80 |     100 |     100 | 52                
+  input.tsx       |     100 |      100 |     100 |     100 |                   
+  scroll-area.tsx |      80 |      100 |     100 |     100 |                   
+ lib              |     100 |      100 |     100 |     100 |                   
+  utils.ts        |     100 |      100 |     100 |     100 |                   
+------------------|---------|----------|---------|---------|-------------------
+```
