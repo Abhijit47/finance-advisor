@@ -1,23 +1,35 @@
 # SmartWealth Assistant - PromptWars Virtual Submission
 
-A smart, dynamic AI Financial Advisor built for the PromptWars Virtual hackathon. Designed with rapid intent-driven development and strict security principles.
+A smart, dynamic AI Financial Advisor built for the PromptWars Virtual hackathon. Designed with rapid intent-driven development, strict security principles, robust API integrations, and comprehensive test coverage.
 
-## 🏆 Project Details
+## 🏆 Problem Statement Alignment
 
-### What We Have Done
-We built a secure, intelligent personal finance assistant that processes your income, expenses, and financial goals, and dynamically generates actionable budgets. The interface features a split-pane layout with an AI Chat on one side and a dynamic Financial Dashboard on the other. 
+**Problem Statement:** Many individuals lack access to personalized, actionable, and secure financial advice, making it difficult to effectively budget their income and plan for long-term targets like saving for a home, car, or retirement. Financial inclusion requires simplified, secure, and intelligent tooling.
 
-Crucially, we prioritized security by migrating the architecture to **Next.js Server API Routes**, ensuring that the Google Gemini API keys are processed strictly on the server side and never exposed to the client or the local browser storage.
+**Solution:** The SmartWealth Assistant addresses this problem directly by providing a secure, intelligent personal finance assistant that processes user income, expenses, and goals to dynamically generate an interactive, actionable budget dashboard.
 
-### Tech Stack Used
+**Target Persona:** Young Professionals, Students, and Individuals seeking to establish a strong financial foundation but lacking access to human financial planners.
+
+## 🛠 Tech Stack & Architecture
+
 - **Framework:** Next.js (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui + Lucide React for iconography + Glassmorphism aesthetic
-- **AI Integration:** Google Gemini API (`gemini-1.5-flash`) via the `@google/generative-ai` SDK
+- **UI Components:** shadcn/ui + Lucide React for iconography 
+- **AI Integration (Google Service #1):** Google Gemini API (`gemini-1.5-flash`) via the `@google/generative-ai` SDK
+- **Maps Integration (Google Service #2):** Google Maps Embed API for local branch queries
+- **Security Validation:** `zod` schema validation on the server side
+- **Testing Coverage:** Automated UI and interaction tests powered by `Jest` and `React Testing Library`
 - **Theming:** Full Light/Dark mode support via `next-themes`
 
-### 🚀 Running the App Locally
+## 🔒 Security Measures
+Crucially, we prioritized security by adopting an intent-driven **Next.js Server API Route** architecture. 
+- API keys are processed strictly on the Node.js server side.
+- Keys are never exposed through local browser storage, thwarting XSS vulnerabilities.
+- Input validation is rigidly sanitized using `zod` schemas.
+- Strict Content Security Policies (CSP) defined via HTTP headers.
+
+## 🚀 Running the App Locally
 
 To ensure security, we are not exposing our production API key in the repository's source code. You will need to provide your own Gemini API key to run the project.
 
@@ -29,10 +41,4 @@ To ensure security, we are not exposing our production API key in the repository
    ```
 4. Run `npm run dev` to start the Next.js development server.
 5. Navigate to `http://localhost:3000` to test out the assistant!
-
-### 🔮 Future Features & Roadmap
-While the current version is complete and highly functional, we plan to implement the following features in the future to elevate the project:
-1. **Plaid / OpenBanking Integration:** Allow users to securely link real bank accounts to automatically ingest transaction history for the AI to analyze, instead of relying solely on manual input.
-2. **Exportable PDF Reports:** A feature to instantly download the generated budget, action plan, and charts as a beautifully formatted PDF.
-3. **Database Integration:** Integrate a database (like Firebase or Supabase) to store User Profiles and past chat context, allowing the AI to remember long-term goals across different sessions.
-4. **Interactive Goal Tracking:** Implement dynamic charting libraries (like Recharts) to visually project savings accumulation over time against target milestones.
+6. To run the automated testing suite, use `npm run test`.

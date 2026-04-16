@@ -212,6 +212,22 @@ export default function App() {
                 ))}
               </ul>
             </div>
+
+            <div className="bg-background border rounded-2xl p-6 shadow-sm mt-4">
+               <h3 className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-4">
+                  Find Local Banks & Planners
+               </h3>
+               <div className="w-full h-[250px] rounded-xl overflow-hidden border">
+                 <iframe
+                    width="100%"
+                    height="100%"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps/embed/v1/search?key=${process.env.NEXT_PUBLIC_MAPS_KEY || "AIzaSyDummyKeyForMapsEmbedAPI1234"}&q=financial+advisors+near+me`}
+                 ></iframe>
+               </div>
+            </div>
           </div>
         ) : (
           <div className="h-full flex flex-col items-center justify-center text-muted-foreground animate-in fade-in duration-1000">

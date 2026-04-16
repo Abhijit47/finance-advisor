@@ -1,9 +1,16 @@
-import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { NextResponse } from 'next/server';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { z } from 'zod';
+
+const InputSchema = z.object({
+  input: z.string().min(1, "Input cannot be empty").max(2000, "Input is too long"),
+});
 
 export async function POST(request: Request) {
   try {
-    const { input } = await request.json();
+    const rawBody = await request.json();
+    const { input } = InputSchema.parse(rawBody);
+
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -40,6 +47,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ responseText });
   } catch (error) {
     console.error("API Error:", error);
+    
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid input structure. " + error.issues[0].message },
+        { status: 400 },
+      );
+    }
+
     return NextResponse.json(
       {
         error:
@@ -51,3 +66,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
